@@ -1,0 +1,70 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "io.github.wyre-technology/avanan-legacy-mcp",
+  "title": "Avanan MSP (Legacy SmartAPI)",
+  "description": "MCP server for the Avanan MSP SmartAPI — manage child MSPs, users, tenants, licenses, and usage.",
+  "repository": {
+    "url": "https://github.com/wyre-technology/avanan-legacy-mcp",
+    "source": "github"
+  },
+  "version": "0.0.0",
+  "websiteUrl": "https://github.com/wyre-technology/avanan-legacy-mcp",
+  "packages": [
+    {
+      "registryType": "oci",
+      "identifier": "ghcr.io/wyre-technology/avanan-legacy-mcp:0.0.0",
+      "transport": {
+        "type": "stdio"
+      },
+      "environmentVariables": [
+        {
+          "name": "AVANAN_APP_ID",
+          "description": "Application ID provided by Avanan Support (x-av-app-id)",
+          "isRequired": true,
+          "format": "string"
+        },
+        {
+          "name": "AVANAN_TOKEN",
+          "description": "Token from the Avanan auth handshake (x-av-token)",
+          "isRequired": true,
+          "isSecret": true,
+          "format": "string"
+        },
+        {
+          "name": "AVANAN_SECRET",
+          "description": "Shared secret used to compute the x-av-sig HMAC",
+          "isRequired": true,
+          "isSecret": true,
+          "format": "string"
+        },
+        {
+          "name": "AVANAN_REGION",
+          "description": "API region: us, eu, ca, or ap (defaults to JWT region claim, then us)",
+          "isRequired": false,
+          "format": "string"
+        },
+        {
+          "name": "MCP_TRANSPORT",
+          "description": "Transport mode: 'stdio' for local CLI use, 'http' for gateway hosting",
+          "isRequired": false,
+          "default": "stdio",
+          "format": "string"
+        },
+        {
+          "name": "MCP_HTTP_PORT",
+          "description": "HTTP transport listen port",
+          "isRequired": false,
+          "default": "8080",
+          "format": "string"
+        },
+        {
+          "name": "LOG_LEVEL",
+          "description": "Log verbosity: debug, info, warn, error",
+          "isRequired": false,
+          "default": "info",
+          "format": "string"
+        }
+      ]
+    }
+  ]
+}
