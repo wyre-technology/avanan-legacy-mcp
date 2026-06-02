@@ -13,6 +13,8 @@ COPY package.json package-lock.json* ./
 RUN npm install --omit=dev --no-audit --no-fund && npm cache clean --force
 COPY --from=build /app/dist ./dist
 
+LABEL io.modelcontextprotocol.server.name="io.github.wyre-technology/avanan-legacy-mcp"
+
 EXPOSE 8080
 ENV MCP_TRANSPORT=http
 ENV MCP_HTTP_PORT=8080
