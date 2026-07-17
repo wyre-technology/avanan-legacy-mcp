@@ -29,6 +29,7 @@ import {
 } from "@modelcontextprotocol/sdk/types.js";
 import { logger } from "./utils/logger.js";
 import { credentialStore, type RequestCredentials } from "./utils/credential-store.js";
+import { registerResourceHandlers } from "./resources.js";
 import { partnerTools, handlePartnerTool } from "./tools/partners.js";
 import { userTools, handleUserTool } from "./tools/users.js";
 import { tenantTools, handleTenantTool } from "./tools/tenants.js";
@@ -56,8 +57,11 @@ const TOOL_HANDLERS = new Map<string, ToolHandler>([
 function createMcpServer(): Server {
   const server = new Server(
     { name: "avanan-legacy-mcp", version: "1.0.0" },
-    { capabilities: { tools: {} } }
+    { capabilities: { tools: {}, resources: {} } }
   );
+
+  // MCP Apps (SEP-1865): serves the ui:// tenant card.
+  registerResourceHandlers(server);
 
   server.setRequestHandler(ListToolsRequestSchema, async () => ({ tools: ALL_TOOLS }));
 

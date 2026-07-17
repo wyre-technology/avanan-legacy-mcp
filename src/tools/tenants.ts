@@ -4,6 +4,7 @@
  */
 
 import type { Tool } from "@modelcontextprotocol/sdk/types.js";
+import { buildTenantCard, TENANT_CARD_META } from "../card.builder.js";
 import { apiRequest } from "../utils/client.js";
 import { formatPagedResult, formatObjectResult, formatDeleteResult } from "../utils/format.js";
 import type { CallToolResult } from "../utils/types.js";
@@ -36,6 +37,9 @@ export const tenantTools: Tool[] = [
   {
     name: "avanan_get_tenant",
     description: "Get details of a single customer tenant by ID, including license, PoC/paid dates, user count, and expiration.",
+    // MCP Apps (SEP-1865): results render as an interactive tenant card in
+    // App-capable hosts (see src/card.builder.ts).
+    _meta: TENANT_CARD_META,
     inputSchema: {
       type: "object",
       properties: { tenant_id: { type: "integer", description: "Avanan tenant ID." } },
@@ -88,6 +92,12 @@ export async function handleTenantTool(
     }
     case "avanan_get_tenant": {
       const res = await apiRequest<Tenant>(`/msp/tenants/${Number(args.tenant_id)}`);
+      // MCP Apps: attach the normalized card payload the ui:// tenant card
+      // renders from. Best-effort — a null card just means no UI surface.
+      const card = buildTenantCard(res.responseData);
+      if (card && res.responseData) {
+        res.responseData = { ...res.responseData, _card: card } as Tenant;
+      }
       return formatObjectResult(res, "Tenant");
     }
     case "avanan_create_tenant": {

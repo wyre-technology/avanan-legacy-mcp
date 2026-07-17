@@ -14,6 +14,17 @@ Implements the Jan 2024 Avanan MSP SmartAPI Reference Guide:
 | Licenses | `avanan_list_licenses`, `avanan_list_addons`, `avanan_assign_license` |
 | Usage | `avanan_get_monthly_usage`, `avanan_get_daily_usage` |
 
+## Features
+
+- **Interactive tenant card (MCP Apps, SEP-1865)**: `avanan_get_tenant` renders as an
+  interactive card in MCP Apps hosts (Claude Desktop/web) showing domain, status,
+  deployment mode, license package, protected users, PoC dates, and add-ons. The card is
+  read-only, neutral by default, and brandable via `window.__BRAND__` injection or
+  `MCP_BRAND_*` env vars (`MCP_BRAND_NAME`, `MCP_BRAND_LOGO_URL`, `MCP_BRAND_PRIMARY_COLOR`,
+  `MCP_BRAND_ACCENT_COLOR`, `MCP_BRAND_BG`, `MCP_BRAND_TEXT`). Plain-JSON behavior is
+  unchanged in other hosts. Rebuild the embedded card HTML after editing `ui/` with
+  `npm run build:ui`.
+
 ## Configuration
 
 | Env var | Required | Description |
