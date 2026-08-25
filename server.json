@@ -1,18 +1,18 @@
 {
   "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
-  "name": "io.github.wyre-technology/avanan-legacy-mcp",
+  "name": "io.github.WYRE-AI/avanan-legacy-mcp",
   "title": "Avanan MSP (Legacy SmartAPI)",
   "description": "MCP server for the Avanan MSP SmartAPI — manage child MSPs, users, tenants, licenses, and usage.",
   "repository": {
-    "url": "https://github.com/wyre-technology/avanan-legacy-mcp",
+    "url": "https://github.com/WYRE-AI/avanan-legacy-mcp",
     "source": "github"
   },
   "version": "0.0.0",
-  "websiteUrl": "https://github.com/wyre-technology/avanan-legacy-mcp",
+  "websiteUrl": "https://github.com/WYRE-AI/avanan-legacy-mcp",
   "packages": [
     {
       "registryType": "oci",
-      "identifier": "ghcr.io/wyre-technology/avanan-legacy-mcp:0.0.0",
+      "identifier": "ghcr.io/wyre-ai/avanan-legacy-mcp:0.0.0",
       "transport": {
         "type": "stdio"
       },
