@@ -1,5 +1,5 @@
 {
-  "name": "@wyre-technology/avanan-legacy-mcp",
+  "name": "@wyre-ai/avanan-legacy-mcp",
   "version": "0.0.0",
   "description": "MCP server for the Avanan MSP SmartAPI (legacy Avanan MSP tenant management) - manage child MSPs, MSP users, customer tenants, licenses, and usage.",
   "type": "module",
@@ -23,7 +23,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/wyre-technology/avanan-legacy-mcp.git"
+    "url": "git+https://github.com/WYRE-AI/avanan-legacy-mcp.git"
   },
   "keywords": [
     "mcp",
@@ -38,9 +38,9 @@
   "author": "Wyre Technology",
   "license": "Apache-2.0",
   "bugs": {
-    "url": "https://github.com/wyre-technology/avanan-legacy-mcp/issues"
+    "url": "https://github.com/WYRE-AI/avanan-legacy-mcp/issues"
   },
-  "homepage": "https://github.com/wyre-technology/avanan-legacy-mcp#readme",
+  "homepage": "https://github.com/WYRE-AI/avanan-legacy-mcp#readme",
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.30.0"
   },
